@@ -1,0 +1,13 @@
+[package]
+name = "environment_server"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "4"
+serde = { version = "1.0.137", features = ["derive"] }
+clap = { version = "3.2.5", features = ["derive"] }
+libloading = "0.7"
+serde_with = "1.14.0"
