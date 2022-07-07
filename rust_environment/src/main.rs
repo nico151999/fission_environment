@@ -14,7 +14,7 @@ struct UserFunctionContainer {
     // this field exists to keep the library in memory which is necessary to use a raw symbol;
     // an alternative would be to load the library, check for a symbol's existence, but not put
     // the symbol itself but the symbol name in the struct and read the symbol again when the
-    // function is invoked. his requires the symbol to be loaded twice though and either way the
+    // function is invoked. This requires the symbol to be loaded twice though and either way the
     // library needs to remain loaded anyway.
     library: libloading::Library,
     function: imp::Symbol<UserFunction>

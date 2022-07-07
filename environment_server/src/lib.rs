@@ -25,7 +25,6 @@ struct CmdlineArgs {
     /// The port the server will run on
     #[clap(short, long, value_parser, default_value_t = 8888)]
     port: u16,
-
     /// The path the user function is located at in v1 API
     #[clap(short, long, value_parser, default_value = "/userfunc/user")]
     code_path: String,
@@ -168,12 +167,12 @@ pub async fn run_server<UserFunction>(
         )
     );
     println!("Launching server on port {}", args.port);
-    // TODO: support sockets
+    // TODO: support websockets
     HttpServer::new(move || {
         App::new()
             .app_data(data.clone())
             .service(
-                web::resource("/healthz}").route(
+                web::resource("/healthz").route(
                     web::method(http::Method::GET).to(HttpResponse::Ok)
                 )
             )
