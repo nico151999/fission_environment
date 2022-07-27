@@ -4,6 +4,7 @@ if [ -d "${SRC_PKG}" ]; then
     echo "Building directory ${SRC_PKG}"
     cd "${SRC_PKG}"
     # TODO: ensure no build script can do things we do not want it to do
+    #  (e.g. do not allow build scripts, or sandbox build process while allowing to fetch packages)
     cargo build -r --locked --lib || exit 1
     # we do not know the name of the crate, so we use the first artifact
     for f in target/release/*.so; do
