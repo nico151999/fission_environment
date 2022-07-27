@@ -30,7 +30,7 @@ impl<UserFunction> LibLoader<V1SpecializeRequest, UserFunctionLoaderV1Response<U
 pub struct V1SpecializeRequest {
     #[serde(rename = "functionName", with = "serde_with::rust::string_empty_as_none")]
     pub function_name: Option<String>,
-    #[serde(with = "serde_with::rust::string_empty_as_none")]
+    #[serde(with = "serde_with::rust::string_empty_as_none", default)]
     pub url: Option<String>
     // TODO: add metadata
 }

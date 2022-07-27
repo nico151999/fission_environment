@@ -29,7 +29,7 @@ pub struct V2SpecializeRequest {
     #[serde(rename = "functionName", with = "serde_with::rust::string_empty_as_none")]
     pub function_name: Option<String>,
     pub filepath: String,
-    #[serde(with = "serde_with::rust::string_empty_as_none")]
+    #[serde(with = "serde_with::rust::string_empty_as_none", default)]
     pub url: Option<String>
     // TODO: add metadata
 }
