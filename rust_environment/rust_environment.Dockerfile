@@ -4,8 +4,8 @@ ARG DEIAN_IMG_VERSION=buster-slim
 FROM rust:${RUST_IMG_VERSION}
 
 WORKDIR /usr/src/app
-COPY ./environment_server ./environment_server
-COPY ./rust_environment ./rust_environment
+COPY ../environment_server ./environment_server
+COPY ./ ./rust_environment
 
 WORKDIR rust_environment
 RUN cargo build -r
