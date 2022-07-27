@@ -58,15 +58,13 @@ async fn main() -> std::io::Result<()> {
     ).await
 }
 
-fn default_function_name() -> String {
-    "handler".to_string()
-}
+const DEFAULT_FUNCTION_NAME: &str = "handle";
 
 fn load_user_function_v1(_req: HttpRequest, req_body: V1SpecializeRequest, user_func_path: &str) -> UserFunctionLoaderV1Response<UserFunctionContainer> {
     unsafe {
         UserFunctionContainer::new(
             user_func_path,
-            req_body.function_name.unwrap_or_else(default_function_name)
+            req_body.function_name.unwrap_or(DEFAULT_FUNCTION_NAME.to_string())
         )
     }
 }
@@ -75,7 +73,7 @@ fn load_user_function_v2(_req: HttpRequest, req_body: V2SpecializeRequest) -> Us
     unsafe {
         UserFunctionContainer::new(
             req_body.filepath.as_str(),
-            req_body.function_name.unwrap_or_else(default_function_name)
+            req_body.function_name.unwrap_or(DEFAULT_FUNCTION_NAME.to_string())
         )
     }
 }
