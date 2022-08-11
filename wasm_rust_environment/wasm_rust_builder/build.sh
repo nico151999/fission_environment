@@ -13,7 +13,7 @@ if [ -d "${SRC_PKG}" ]; then
     done
 elif [ -f "${SRC_PKG}" ]; then
     echo "Building file ${SRC_PKG}"
-    rustc --crate-type cdylib --target wasm32-unknown-unknown -o "${DEPLOY_PKG}"
+    rustc --crate-type cdylib --target wasm32-unknown-unknown "${SRC_PKG}" -o "${DEPLOY_PKG}"
 else
     >&2 echo "${SRC_PKG} not found"
     exit 1
