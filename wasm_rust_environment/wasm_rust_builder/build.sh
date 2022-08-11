@@ -2,7 +2,7 @@
 
 if [ -d "${SRC_PKG}" ]; then
     echo "Building directory ${SRC_PKG}"
-    cd "${SRC_PKG}"
+    cd "${SRC_PKG}" ||exit 1
     # TODO: ensure no build script can do things we do not want it to do
     #  (e.g. do not allow build scripts, or sandbox build process while allowing to fetch packages)
     cargo build -r --locked --lib --target=wasm32-unknown-unknown || exit 1
