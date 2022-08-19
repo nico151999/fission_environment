@@ -5,3 +5,6 @@
 wasm_rust_environment/fission_wasm_rust_protocol/bindings
 wasm_rust_environment/src/spec/bindings.rs
 wasm_rust_environment/src/spec/types.rs
+wasm_js_environment/fission_wasm_js_protocol/bindings
+wasm_js_environment/src/spec/bindings.rs
+wasm_js_environment/src/spec/types.rs

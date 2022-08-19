@@ -1,0 +1,16 @@
+[package]
+name = "fission_wasm_js_protocol"
+version = "0.1.0"
+edition = "2021"
+authors = ["Nico Feulner <nico.feulner@gmail.com>"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# TODO: remove git link as soon as it is merged
+fp-bindgen = { git = "https://github.com/nico151999/fp-bindgen.git", version = "2.0.1", features = [
+    "http-compat",
+    "generators",
+] }
+http = "0.2.8"
+serde = { version = "1.0", features = [ "derive" ] }
