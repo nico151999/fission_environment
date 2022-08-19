@@ -1,5 +1,5 @@
-ARG BUILDER_IMAGE=fission/builder
-ARG RUST_IMG_VERSION=1.61-buster
+ARG BUILDER_IMAGE='fission/builder'
+ARG RUST_IMG_VERSION='1.63-bullseye'
 
 FROM ${BUILDER_IMAGE}
 

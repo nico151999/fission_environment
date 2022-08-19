@@ -25,11 +25,9 @@ impl UserFunctionContainer {
         let path = Path::new(user_func_path);
         let lib_path = if path.is_dir() {
             path.join(
-                path.read_dir()?.next().ok_or(
-                    Box::new(
+                path.read_dir()?.next().ok_or_else(|| Box::new(
                         ErrorInternalServerError("Could not get library containing user function in expected path")
-                    )
-                )??.path()
+                    ))??.path()
             )
         } else {
             path.to_path_buf()
@@ -64,7 +62,7 @@ fn load_user_function_v1(_req: HttpRequest, req_body: V1SpecializeRequest, user_
     unsafe {
         UserFunctionContainer::new(
             user_func_path,
-            req_body.function_name.unwrap_or(DEFAULT_FUNCTION_NAME.to_string())
+            req_body.function_name.unwrap_or_else(|| DEFAULT_FUNCTION_NAME.to_string())
         )
     }
 }
@@ -73,7 +71,7 @@ fn load_user_function_v2(_req: HttpRequest, req_body: V2SpecializeRequest) -> Us
     unsafe {
         UserFunctionContainer::new(
             req_body.filepath.as_str(),
-            req_body.function_name.unwrap_or(DEFAULT_FUNCTION_NAME.to_string())
+            req_body.function_name.unwrap_or_else(|| DEFAULT_FUNCTION_NAME.to_string())
         )
     }
 }
