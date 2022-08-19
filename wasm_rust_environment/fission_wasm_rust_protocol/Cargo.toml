@@ -7,7 +7,8 @@ authors = ["Nico Feulner <nico.feulner@gmail.com>"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-fp-bindgen = { version = "2.0.1", features = [
+# TODO: remove git link as soon as it is merged
+fp-bindgen = { git = "https://github.com/nico151999/fp-bindgen.git", version = "2.0.1", features = [
     "http-compat",
     "generators",
 ] }

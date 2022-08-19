@@ -9,8 +9,10 @@ edition = "2021"
 environment_server = { path = "../environment_server" }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 actix-web = "4"
-fp-bindgen-support = { version = "2.0.1", features = ["host", "http", "async"] }
+# TODO: remove git link as soon as it is merged
+fp-bindgen-support = { git = "https://github.com/nico151999/fp-bindgen.git", version = "2.0.1", features = ["host", "http", "async"] }
 wasmer = "2.3.0"
+wasmer-wasi = "2.3.0"
 http = "0.2.8"
 serde = { version = "1.0", features = ["derive"] }
 wasmer-engine-universal = { version = "2.2", features = ["compiler"] }

@@ -53,6 +53,9 @@ name = "bytes"
 version = "1.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f0b3de4a0c5e67e16066a0715723abd91edc2f9001d09c46e1dca929351e130e"
+dependencies = [
+ "serde",
+]
 
 [[package]]
 name = "cfg-if"
@@ -101,11 +104,11 @@ checksum = "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
 
 [[package]]
 name = "fp-bindgen"
-version = "2.0.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "eaa93b5b0597679bc3b8e40fd1e255b9671e52ad8f5955ffd67b3ec2289e3e81"
+version = "2.1.0"
+source = "git+https://github.com/nico151999/fp-bindgen.git#abeeecb374637ca9733c4d957b374b0f481d82a0"
 dependencies = [
  "Inflector",
+ "bytes",
  "fp-bindgen-macros",
  "http",
  "pretty_assertions",
@@ -120,9 +123,8 @@ dependencies = [
 
 [[package]]
 name = "fp-bindgen-macros"
-version = "2.0.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "df5e0b46107679bcfd8deaac9de16eb9f30c25f49919ef012e58b80e1a1e1d1a"
+version = "2.1.0"
+source = "git+https://github.com/nico151999/fp-bindgen.git#abeeecb374637ca9733c4d957b374b0f481d82a0"
 dependencies = [
  "proc-macro-error",
  "proc-macro2",

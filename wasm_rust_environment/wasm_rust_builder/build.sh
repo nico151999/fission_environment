@@ -2,10 +2,10 @@
 
 if [ -d "${SRC_PKG}" ]; then
     echo "Building directory ${SRC_PKG}"
-    cd "${SRC_PKG}" ||exit 1
+    cd "${SRC_PKG}" || exit 1
     # TODO: ensure no build script can do things we do not want it to do
     #  (e.g. do not allow build scripts, or sandbox build process while allowing to fetch packages)
-    cargo build -r --locked --lib --target=wasm32-unknown-unknown || exit 1
+    cargo build -r --locked --lib --target=wasm32-wasi || exit 1
     # we do not know the name of the crate, so we use the first artifact
     for f in target/release/*.wasm; do
         mv "${f}" "${DEPLOY_PKG}"
@@ -13,7 +13,7 @@ if [ -d "${SRC_PKG}" ]; then
     done
 elif [ -f "${SRC_PKG}" ]; then
     echo "Building file ${SRC_PKG}"
-    rustc --crate-type cdylib --target wasm32-unknown-unknown "${SRC_PKG}" -o "${DEPLOY_PKG}"
+    rustc --crate-type cdylib --target wasm32-wasi "${SRC_PKG}" -o "${DEPLOY_PKG}"
 else
     >&2 echo "${SRC_PKG} not found"
     exit 1

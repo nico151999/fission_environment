@@ -45,17 +45,18 @@ fn main() {
                         CargoDependency {
                             version: Some("2.0.1"),
                             features: BTreeSet::from(["async", "guest", "http"]),
-                            git: Some("https://github.com/fiberplane/fp-bindgen.git"),
+                            // TODO: replace git link by one pointing to fiberplane as soon as it is merged
+                            git: Some("https://github.com/nico151999/fp-bindgen.git"),
                             branch: Some("main"),
                             ..CargoDependency::default()
                         },
                     ),
                 ]),
             }),
-            "./bindings/fission_wasm_rust_protocol_plugin"
+            format!("./bindings/{}_plugin", env!("CARGO_PKG_NAME")).as_str()
         ),
         (
-            BindingsType::RustWasmerRuntime,
+            BindingsType::RustWasmerWasiRuntime,
             "../src/spec"
         )
     ] {

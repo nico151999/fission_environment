@@ -25,7 +25,7 @@ name = "example_wasm_rust_function"
 version = "0.1.0"
 dependencies = [
  "fission_wasm_rust_protocol_plugin",
- "fp-bindgen-macros 2.0.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "fp-bindgen-macros 2.1.0 (git+https://github.com/nico151999/fp-bindgen.git)",
  "http",
 ]
 
@@ -48,9 +48,8 @@ checksum = "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
 
 [[package]]
 name = "fp-bindgen-macros"
-version = "2.0.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "df5e0b46107679bcfd8deaac9de16eb9f30c25f49919ef012e58b80e1a1e1d1a"
+version = "2.1.0"
+source = "git+https://github.com/nico151999/fp-bindgen.git?branch=main#abeeecb374637ca9733c4d957b374b0f481d82a0"
 dependencies = [
  "proc-macro-error",
  "proc-macro2",
@@ -60,8 +59,8 @@ dependencies = [
 
 [[package]]
 name = "fp-bindgen-macros"
-version = "2.0.1"
-source = "git+https://github.com/fiberplane/fp-bindgen.git?branch=main#c14eb90554d841e9cf161e23c4c8a7b00f634cc5"
+version = "2.1.0"
+source = "git+https://github.com/nico151999/fp-bindgen.git#abeeecb374637ca9733c4d957b374b0f481d82a0"
 dependencies = [
  "proc-macro-error",
  "proc-macro2",
@@ -71,10 +70,10 @@ dependencies = [
 
 [[package]]
 name = "fp-bindgen-support"
-version = "2.0.1"
-source = "git+https://github.com/fiberplane/fp-bindgen.git?branch=main#c14eb90554d841e9cf161e23c4c8a7b00f634cc5"
+version = "2.1.0"
+source = "git+https://github.com/nico151999/fp-bindgen.git?branch=main#abeeecb374637ca9733c4d957b374b0f481d82a0"
 dependencies = [
- "fp-bindgen-macros 2.0.1 (git+https://github.com/fiberplane/fp-bindgen.git?branch=main)",
+ "fp-bindgen-macros 2.1.0 (git+https://github.com/nico151999/fp-bindgen.git?branch=main)",
  "http",
  "once_cell",
  "rmp-serde",

@@ -30,11 +30,9 @@ impl UserFunctionContainer {
         let path = Path::new(user_func_path);
         let lib_path = if path.is_dir() {
             path.join(
-                path.read_dir()?.next().ok_or(
-                    Box::new(
-                        ErrorInternalServerError("Could not get library containing user function in expected path")
-                    )
-                )??.path()
+                path.read_dir()?.next().ok_or_else(|| Box::new(
+                    ErrorInternalServerError("Could not get library containing user function in expected path")
+                ))??.path()
             )
         } else {
             path.to_path_buf()
@@ -43,6 +41,7 @@ impl UserFunctionContainer {
         let module_wat = fs::read(lib_path)?;
         let rt = spec::bindings::Runtime::new(module_wat)?;
         let user_function = match user_function.as_str() {
+            // handle is the only user function name currently supported
             "handle" => {
                 |rt: &spec::bindings::Runtime, req: HttpRequest, req_body: web::Bytes| {
                     let actix_headers = req.headers();
@@ -99,14 +98,14 @@ const DEFAULT_FUNCTION_NAME: &str = "handle";
 fn load_user_function_v1(_req: HttpRequest, req_body: V1SpecializeRequest, user_func_path: &str) -> UserFunctionLoaderV1Response<UserFunctionContainer> {
     UserFunctionContainer::new(
         user_func_path,
-        req_body.function_name.unwrap_or(DEFAULT_FUNCTION_NAME.to_string())
+        req_body.function_name.unwrap_or_else(|| DEFAULT_FUNCTION_NAME.to_string())
     )
 }
 
 fn load_user_function_v2(_req: HttpRequest, req_body: V2SpecializeRequest) -> UserFunctionLoaderV2Response<UserFunctionContainer> {
     UserFunctionContainer::new(
         req_body.filepath.as_str(),
-        req_body.function_name.unwrap_or(DEFAULT_FUNCTION_NAME.to_string())
+        req_body.function_name.unwrap_or_else(|| DEFAULT_FUNCTION_NAME.to_string())
     )
 }
 

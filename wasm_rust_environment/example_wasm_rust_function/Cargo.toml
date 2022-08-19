@@ -9,6 +9,7 @@ crate-type = ["cdylib"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-fp-bindgen-macros = "2.0.1"
+# TODO: remove git link as soon as it is merged
+fp-bindgen-macros = { git = "https://github.com/nico151999/fp-bindgen.git", version = "2.0.1" }
 fission_wasm_rust_protocol_plugin = { path = "../fission_wasm_rust_protocol/bindings/fission_wasm_rust_protocol_plugin" }
 http = "0.2.8"
