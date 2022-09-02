@@ -14,7 +14,7 @@ ARG WASI_SDK_PATH='/opt/wasi-sdk'
 ARG APP_DIR='/usr/src/app'
 WORKDIR ${APP_DIR}
 COPY ./environment_server ./environment_server
-COPY ./wasm_js_environment ./wasm_js_environment
+COPY ./wasm_js_environment/v1 ./wasm_js_environment
 
 ENV JS_RUNTIME_WASM="${APP_DIR}/wasm_js_runtime.wasm"
 ENV QUICKJS_WASM_SYS_WASI_SDK_PATH="${WASI_SDK_PATH}"

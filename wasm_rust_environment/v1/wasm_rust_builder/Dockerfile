@@ -6,4 +6,5 @@ FROM ${BUILDER_IMAGE}
 FROM rust:${RUST_IMG_VERSION}
 
 COPY --from=0 /builder /builder
-ADD rust_environment/rust_builder/build.sh /usr/local/bin/build
+RUN rustup target add wasm32-wasi
+ADD wasm_rust_environment/v1/wasm_rust_builder/build.sh /usr/local/bin/build

@@ -5,7 +5,7 @@ FROM rust:${RUST_IMG_VERSION}
 
 WORKDIR /usr/src/app
 COPY ./environment_server ./environment_server
-COPY ./wasm_js_environment ./wasm_js_environment
+COPY ./wasm_js_environment/v1 ./wasm_js_environment
 
 WORKDIR wasm_js_environment/fission_wasm_js_protocol
 RUN rustup component add rustfmt &&\

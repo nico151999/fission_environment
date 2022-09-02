@@ -7,7 +7,7 @@ RUN rustup component add rustfmt
 
 WORKDIR /usr/src/app
 COPY ./environment_server ./environment_server
-COPY ./wasm_rust_environment ./wasm_rust_environment
+COPY ./wasm_rust_environment/v1 ./wasm_rust_environment
 
 WORKDIR wasm_rust_environment/fission_wasm_rust_protocol
 RUN cargo run

@@ -5,7 +5,7 @@ FROM rust:${RUST_IMG_VERSION}
 
 WORKDIR /usr/src/app
 COPY ./environment_server ./environment_server
-COPY ./rust_environment ./rust_environment
+COPY ./rust_environment/v1 ./rust_environment
 
 WORKDIR rust_environment
 RUN cargo build -r
